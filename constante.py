@@ -4,6 +4,11 @@ FPS = 60
 #Color
 BLACK = (0, 0, 0)
 
+#Sounds
+SHOOT_SOUND = 'assests/shoot_sound.mp3'
+BACKGROUND_SOUND = 'assests/background_sound.mp3'
+HIT_SOUND = 'assests/hit_sound.mp3'
+
 #Images
 PLANET_1 = 'assests/planet_1.png'
 PLANET_2 = 'assests/planet_2.png'

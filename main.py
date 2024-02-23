@@ -21,6 +21,9 @@ class Fase_1():
         self.background = pygame.image.load(BACKGROUND)
         self.plataform = pygame.image.load(FLOOR)
         self.plataform = pygame.transform.scale(self.plataform,PLATAFORM_SIZE)
+        self.shoot_sound = pygame.mixer.Sound(SHOOT_SOUND)
+        self.hit_sound = pygame.mixer.Sound(HIT_SOUND)
+
         
 
     def run(self):
@@ -46,6 +49,7 @@ class Fase_1():
                 bullet = Bullet(self.shooter.s0, v)
 
                 self.bullet_list.append(bullet)
+                pygame.mixer.Sound.play(self.shoot_sound)
             
             #Calculate the points
             if self.shooter.points >= 5:
@@ -71,6 +75,7 @@ class Fase_1():
                 self.bullet_list.remove(bullet)
             elif bullet.collision(self.target):
                 self.bullet_list.remove(bullet)
+                pygame.mixer.Sound.play(self.hit_sound)
                 self.shooter.points += 1
 
         return self
@@ -125,6 +130,8 @@ class Fase_2():
         self.background = pygame.image.load(BACKGROUND)
         self.plataform = pygame.image.load(FLOOR)
         self.plataform = pygame.transform.scale(self.plataform, PLATAFORM_SIZE)
+        self.shoot_sound = pygame.mixer.Sound(SHOOT_SOUND)
+        self.hit_sound = pygame.mixer.Sound(HIT_SOUND)
 
     def run(self):
 
@@ -147,6 +154,8 @@ class Fase_2():
                 bullet = Bullet(self.shooter.s0, v)
 
                 self.bullet_list.append(bullet)
+
+                pygame.mixer.Sound.play(self.shoot_sound)
             if self.shooter.points >= 5:
                 return Tela_final()
 
@@ -173,6 +182,7 @@ class Fase_2():
             elif bullet.collision(self.target):
                 self.bullet_list.remove(bullet)
                 self.shooter.points += 1
+                self.hit_sound.play()
 
         return self
     def draw(self, screen):
@@ -271,7 +281,11 @@ class Jogo():
     def __init__(self):
         
         pygame.init()
+        pygame.mixer.init()
         pygame.display.set_caption('Alien Hunt')
+        pygame.mixer.music.load(BACKGROUND_SOUND)
+        pygame.mixer.music.set_volume(0.25)
+        pygame.mixer.music.play(-1)
         self.current_screen=Tela_Inicial()
         self.screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
