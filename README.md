@@ -12,6 +12,8 @@ O jogo, denominado Alien Hunt, tem como premissa a ideia de que o mundo de Minec
 
 O jogador deve usar o mouse para selecionar a direção e a velocidade em que a pedra será atirada. Quanto mais longe do canhão, maior a velocidade da pedra.
 
+![Gif do Jogo](jogo_gif.gif)
+
 ### Requisitos do Sistema
 
 Certifique-se de ter o Python e o Pygame instalados no seu sistema.
